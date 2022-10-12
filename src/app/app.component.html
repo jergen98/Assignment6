@@ -1,0 +1,32 @@
+<h1>Todos</h1>
+<h2>Get Request (localhost:8080/todos)</h2>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>Summary</th>
+        <th></th>
+    </tr>
+    <tr *ngFor= "let tod of allTodos">
+      <td> {{tod.id}}</td>
+      <td> {{tod.description}}</td>
+      <td> {{tod.summary}}</td>
+      <td> <button class="btn-delete" (click)="onDeleteTodo(tod.id)" >Delete</button></td>
+        
+    </tr>
+
+</table>
+
+<input type="submit" value="Refresh" (click)="onProductsFetch()">
+
+<h2>Post Request (localhost:8080/todos)</h2>
+
+<form #productsForm = "ngForm" (ngSubmit)="add(productsForm.value)"> 
+  <label for="description">Description:</label><br>
+  <input type="text" id="description" name="description" ngModel><br>
+
+  <label for="summary">Summary:</label><br>
+  <input type="text" id="summary" name="summary" ngModel><br>
+
+  <input type="submit" value="Add">
+</form>
